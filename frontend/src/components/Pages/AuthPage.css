@@ -1,0 +1,272 @@
+/* src/components/Pages/AuthPage.css */
+.auth-container {
+  background: linear-gradient(135deg, 
+    #ffafbd 0%, 
+    #ffc3a0 25%, 
+    #ffdde1 50%, 
+    #ffffff 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #ff6b95;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ff6b95 0%, #ff8e53 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Стили кнопок */
+.auth-btn {
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #ff6b95 0%, #ff8e53 100%) !important;
+  box-shadow: 0 4px 15px rgba(255, 107, 149, 0.3) !important;
+  border: none !important;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 149, 0.4) !important;
+  background: linear-gradient(135deg, #ff8e53 0%, #ff6b95 100%) !important;
+}
+
+.register-btn {
+  border: 2px solid #ff6b95 !important;
+  color: #ff6b95 !important;
+  background: transparent !important;
+}
+
+.register-btn:hover {
+  background: linear-gradient(135deg, #ff6b95 0%, #ff8e53 100%) !important;
+  color: white !important;
+  border: 2px solid transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 149, 0.3) !important;
+}
+
+/* Стили для модальных окон - БЕЗ ПРОКРУТКИ */
+.auth-modal .modal-content {
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  /* Убираем максимальную высоту и прокрутку */
+  max-height: none;
+  overflow: hidden;
+}
+
+.auth-modal .modal-body {
+  /* Убираем прокрутку у body */
+  overflow: visible;
+  max-height: none;
+}
+
+.modal-header-custom {
+  border-bottom: 1px solid rgba(255, 107, 149, 0.2);
+  background: linear-gradient(135deg, rgba(255, 107, 149, 0.1) 0%, rgba(255, 142, 83, 0.1) 100%);
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem;
+}
+
+.modal-title-custom {
+  background: linear-gradient(135deg, #ff6b95 0%, #ff8e53 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.modal-header-custom .btn-close {
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff6b95'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.modal-header-custom .btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal-input {
+  border: 2px solid rgba(255, 107, 149, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  height: 45px;
+}
+
+.modal-input:focus {
+  border-color: #ff6b95;
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 149, 0.25);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.modal-input::placeholder {
+  color: #aaa;
+}
+
+.modal-submit-btn {
+  background: linear-gradient(135deg, #ff6b95 0%, #ff8e53 100%);
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 149, 0.3);
+  height: 50px;
+}
+
+.modal-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 149, 0.4);
+  background: linear-gradient(135deg, #ff8e53 0%, #ff6b95 100%);
+}
+
+/* Анимации для модальных окон */
+.modal.fade .modal-dialog {
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Стили для ошибок валидации */
+.invalid-feedback {
+  color: #ff6b95;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.form-control.is-invalid {
+  border-color: #ff6b95;
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 149, 0.25);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .auth-card {
+    margin: 20px;
+  }
+  
+  .brand-title {
+    font-size: 2rem;
+  }
+  
+  .auth-modal .modal-dialog {
+    margin: 20px;
+  }
+  
+  .modal-header-custom {
+    padding: 1rem;
+  }
+  
+  .modal-title-custom {
+    font-size: 1.25rem;
+  }
+  
+  .modal-input {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    height: 42px;
+  }
+  
+  .modal-submit-btn {
+    height: 46px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Уменьшаем отступы для компактности */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
