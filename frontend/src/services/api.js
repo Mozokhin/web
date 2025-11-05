@@ -65,6 +65,40 @@ class ApiService {
   async getProfile() {
     return this.request('/auth/profile');
   }
+
+  // --- МЕТОДЫ ДЛЯ ЗАДАЧ (НОВОЕ) ---
+
+  // Получить все задачи
+  async getTasks() {
+    return this.request('/tasks');
+  }
+
+  // Создать задачу
+  async createTask(taskData) {
+    return this.request('/tasks', {
+      method: 'POST',
+      body: JSON.stringify(taskData),
+    });
+  }
+
+  // Обновить статус задачи
+  async updateTaskStatus(taskId, status) {
+    return this.request(`/tasks/${taskId}/status`, {
+      method: 'PUT',
+      body: JSON.stringify({ status }),
+    });
+  }
+  
+  // Архивировать задачу
+  async archiveTask(taskId) {
+      return this.request(`/tasks/${taskId}/archive`, {
+          method: 'PUT',
+      });
+  }
+
+  async getAllUsers() {
+    return this.request('/users');
+  }
 }
 
 export const apiService = new ApiService();

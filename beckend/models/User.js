@@ -47,6 +47,12 @@ class User {
     const result = await pool.query(query, [id]);
     return result.rows[0];
   }
+
+  static async findAll() {
+    const query = 'SELECT id, first_name FROM users ORDER BY first_name ASC';
+    const result = await pool.query(query);
+    return result.rows;
+  }
 }
 
 module.exports = User;

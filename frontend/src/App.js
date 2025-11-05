@@ -7,6 +7,7 @@ import AuthPage from './components/Pages/AuthPage';
 import Home from './components/Pages/Home';
 import Profile from './components/Pages/Profile';
 import Tasks from './components/Pages/Tasks';
+import Archive from './components/Pages/Archive';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 
@@ -46,6 +47,11 @@ function App() {
             <Layout>
               <Tasks />
             </Layout>
+          } />
+          <Route path="/archive" element={
+            <Layout>
+                <Archive />
+              </Layout>
           } />
         </Routes>
       </div>

@@ -38,7 +38,6 @@ const Profile = () => {
       const result = await apiService.getProfile();
       if (result.success) {
         setUser(result.data.user);
-        // Исправляем: используем правильные поля из ответа API
         setEditForm({
           firstName: result.data.user.firstName || result.data.user.first_name || '',
           phone: result.data.user.phone || '',
@@ -65,10 +64,8 @@ const Profile = () => {
     setEditLoading(true);
     
     try {
-      // Здесь будет вызов API для обновления профиля
       console.log('Обновление профиля:', editForm);
       
-      // Имитация успешного обновления
       setTimeout(() => {
         setUser(prev => ({
           ...prev,
@@ -103,13 +100,11 @@ const Profile = () => {
     setPasswordLoading(true);
     
     try {
-      // Здесь будет вызов API для смены пароля
       console.log('Смена пароля:', {
         currentPassword: passwordForm.currentPassword,
         newPassword: passwordForm.newPassword
       });
       
-      // Имитация успешной смены пароля
       setTimeout(() => {
         setShowPasswordModal(false);
         setPasswordLoading(false);
@@ -151,7 +146,6 @@ const Profile = () => {
     });
   };
 
-  // Функция для получения имени пользователя (обрабатывает разные форматы)
   const getUserName = () => {
     if (!user) return '';
     return user.firstName || user.first_name || 'Не указано';
@@ -159,10 +153,10 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <Container fluid className="profile-container">
-        <div className="text-center mt-5">
-          <Spinner animation="border" variant="primary" />
-          <p className="mt-3">Загрузка профиля...</p>
+      <Container fluid className="profile-container d-flex justify-content-center align-items-center">
+        <div className="text-center">
+          <Spinner animation="border" variant="light" />
+          <p className="mt-3 text-white">Загрузка профиля...</p>
         </div>
       </Container>
     );
@@ -192,14 +186,14 @@ const Profile = () => {
     <>
       <Container fluid className="profile-container">
         <Row className="justify-content-center">
-          <Col xs={12} lg={8} xl={6}>
+          <Col xs={12} lg={10} xl={8}>
             {/* Заголовок */}
             <div className="profile-header text-center mb-4">
               <h1 className="profile-title">👤 Профиль</h1>
               <p className="profile-subtitle">Управление вашей учетной записью</p>
             </div>
 
-            {/* Основная информация - ОБЫЧНАЯ КАРТОЧКА */}
+            {/* Основная информация */}
             <Card className="profile-card">
               <Card.Header className="profile-card-header">
                 <h5 className="mb-0">📋 Основная информация</h5>
@@ -230,55 +224,55 @@ const Profile = () => {
               </Card.Body>
             </Card>
 
-            {/* Кнопки действий - ОТДЕЛЬНЫЕ ХЕДЕР И КОНТЕНТ */}
-            <div className="profile-actions-card mt-4">
-              <Card className="profile-actions-header">
-                <h5 className="mb-0">⚡ Действия</h5>
-              </Card>
-              <Card className="profile-actions-content">
-                <div className="actions-grid">
-                  <Button 
-                    variant="primary" 
-                    className="action-btn"
-                    onClick={() => setShowEditModal(true)}
-                  >
-                    ✏️ Редактировать профиль
-                  </Button>
-                  <Button 
-                    variant="outline-primary" 
-                    className="action-btn"
-                    onClick={() => setShowPasswordModal(true)}
-                  >
-                    🔒 Сменить пароль
-                  </Button>
-                </div>
-              </Card>
-            </div>
-
-            {/* Статистика - ОТДЕЛЬНЫЕ ХЕДЕР И КОНТЕНТ */}
-            <div className="profile-stats-card mt-4">
-              <Card className="profile-stats-header">
-                <h5 className="mb-0">📊 Статистика</h5>
-              </Card>
-              <Card className="profile-stats-content">
-                <div className="stats-grid">
-                  <div className="stat-item">
-                    <div className="stat-number">0</div>
-                    <div className="stat-label">Созданных задач</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-number">0</div>
-                    <div className="stat-label">Выполнено задач</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-number">
-                      {Math.ceil((new Date() - new Date(user.created_at)) / (1000 * 60 * 60 * 24))}
+            {/* Кнопки действий */}
+            <Card className="profile-card">
+                <Card.Header className="profile-card-header">
+                    <h5 className="mb-0">⚡ Действия</h5>
+                </Card.Header>
+                <Card.Body>
+                    <div className="actions-grid">
+                        <Button 
+                            variant="primary" 
+                            className="action-btn"
+                            onClick={() => setShowEditModal(true)}
+                        >
+                            ✏️ Редактировать профиль
+                        </Button>
+                        <Button 
+                            variant="outline-primary" 
+                            className="action-btn"
+                            onClick={() => setShowPasswordModal(true)}
+                        >
+                            🔒 Сменить пароль
+                        </Button>
                     </div>
-                    <div className="stat-label">Дней с нами</div>
-                  </div>
-                </div>
-              </Card>
-            </div>
+                </Card.Body>
+            </Card>
+
+            {/* Статистика */}
+            <Card className="profile-card">
+                <Card.Header className="profile-card-header">
+                    <h5 className="mb-0">📊 Статистика</h5>
+                </Card.Header>
+                <Card.Body>
+                    <div className="stats-grid">
+                        <div className="stat-item">
+                            <div className="stat-number">0</div>
+                            <div className="stat-label">Созданных задач</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">0</div>
+                            <div className="stat-label">Выполнено задач</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">
+                                {Math.ceil((new Date() - new Date(user.created_at)) / (1000 * 60 * 60 * 24))}
+                            </div>
+                            <div className="stat-label">Дней с нами</div>
+                        </div>
+                    </div>
+                </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

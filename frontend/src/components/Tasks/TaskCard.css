@@ -1,0 +1,51 @@
+/* frontend/src/components/Tasks/TaskCard.css */
+.task-card {
+  border: none;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+  cursor: grab;
+}
+
+.task-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.task-card:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.task-description {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+  min-height: 40px; /* Чтобы карточки были примерно одной высоты */
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.task-assignee {
+  color: #555;
+  font-weight: 500;
+}
+
+.task-due-date {
+  font-weight: 600;
+  padding: 0.3em 0.6em;
+}
